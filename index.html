@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>sellerdata — управленческая аналитика для селлеров</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div class="offer-bar">
+    <span class="offer-dot desktop-only"></span>
+    <span id="offer-text">Внедрение за 2 нед. + 2 мес. поддержка в подарок – до 30 августа</span>
+    <a href="#contact" class="desktop-only">Забрать предложение</a>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo">seller<span class="logo-data">data</span></a>
+
+      <nav class="nav-desktop desktop-only">
+        <a class="nav-link" href="#pricing">Цены</a>
+        <a class="nav-link" href="#contact">Контакты</a>
+      </nav>
+
+      <div class="header-actions desktop-only">
+        <a class="btn btn-ghost" href="#contact">Запросить демо</a>
+        <a class="btn btn-primary" href="#contact">Подключить</a>
+        <a class="icon-btn" href="#contact" aria-label="Войти">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="8" r="3.6" stroke="#121722" stroke-width="1.6"/>
+            <path d="M4.8 20c0-3.4 3.2-5.6 7.2-5.6s7.2 2.2 7.2 5.6" stroke="#121722" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="mobile-only header-mobile-actions">
+        <a class="btn btn-primary" href="#contact" style="font-size:14px;padding:10px 18px">Подключить</a>
+        <button type="button" class="menu-btn" id="menu-btn" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <nav class="mobile-nav" id="mobile-nav">
+        <a href="#product">Интерфейс</a>
+        <a href="#pricing">Цены</a>
+        <a href="#contact">Вход в кабинет</a>
+        <a class="btn btn-ghost" href="#contact">Запросить демо</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="product">
+    <div class="hero-inner">
+      <div class="hero-badges">
+        <span class="eyebrow">Управленческая аналитика для селлеров</span>
+        <img class="mp-logo" src="assets/img/ozon.png" alt="OZON">
+        <img class="mp-logo" src="assets/img/wb.png" alt="Wildberries">
+      </div>
+
+      <div class="pill-row">
+        <span class="pill pill-accent">SaaS</span>
+        <span class="pill">На вашем сервере</span>
+        <span class="pill pill-accent">Поддержка 24×7</span>
+      </div>
+
+      <h1 class="hero-title" id="hero-title">Какие SKU не продаются, но затоварены?</h1>
+
+      <div class="cta-row">
+        <a class="btn btn-primary btn-lg glow" href="#contact">Подключить</a>
+        <a class="btn btn-ghost btn-lg" href="#contact">Запросить демо</a>
+      </div>
+
+      <div class="product-stack">
+        <div class="card">
+          <div class="filter-row">
+            <span class="mono">Деньги и товар</span>
+            <span class="chip chip-dark">Все</span>
+            <span class="chip">Свой товар</span>
+            <span class="chip">Под реализацию</span>
+            <span class="filter-selects">
+              <span class="select-chip">Статус покупки <span class="caret">⌄</span></span>
+              <span class="select-chip">Статус продажи <span class="caret">⌄</span></span>
+              <span class="select-chip">Статус товара <span class="caret">⌄</span></span>
+            </span>
+            <span class="widget-tools">
+              <img src="assets/img/icon-expand.png" alt="">
+              <img src="assets/img/icon-layers.png" alt="">
+              <img src="assets/img/icon-add.png" alt="">
+            </span>
+          </div>
+          <div class="money-chart">
+            <div class="axis-btns">
+              <span class="axis-btn rub">₽, млн</span>
+              <span class="axis-btn pcs">Шт.</span>
+            </div>
+            <div class="money-bar">
+              <span class="money-seg" style="flex-grow:22;background:#1a73f9">2,7</span>
+              <span class="money-seg" style="flex-grow:18;background:#f0a020">2,1</span>
+              <span class="money-seg" style="flex-grow:15;background:#12b981">1,8</span>
+              <span class="money-seg" style="flex-grow:14;background:#ef4444">1,5</span>
+              <span class="money-seg" style="flex-grow:10;background:#8b5cf6">1,2</span>
+              <span class="money-seg" style="flex-grow:8.5;background:#14b8a6">0,9</span>
+              <span class="money-seg" style="flex-grow:3.4;background:#f97316"></span>
+              <span class="money-seg" style="flex-grow:3;background:#2563eb"></span>
+              <span class="money-seg" style="flex-grow:2.2;background:#84cc16"></span>
+              <span class="money-seg" style="flex-grow:1.9;background:#ec4899"></span>
+              <span class="money-seg" style="flex-grow:2;background:#0ea5e9"></span>
+            </div>
+          </div>
+          <div class="legend">
+            <span class="legend-item"><span class="swatch" style="background:#1a73f9"></span>На счете</span>
+            <span class="legend-item"><span class="swatch" style="background:#f0a020"></span>К выводу</span>
+            <span class="legend-item"><span class="swatch" style="background:#12b981"></span>На балансе</span>
+            <span class="legend-item"><span class="swatch" style="background:#ef4444"></span>В пути к клиентам</span>
+            <span class="legend-item"><span class="swatch" style="background:#8b5cf6"></span>В отгрузке с ФФ</span>
+            <span class="legend-item"><span class="swatch" style="background:#14b8a6"></span>Комплект.ФФ</span>
+            <span class="legend-item"><span class="swatch" style="background:#f97316"></span>Потери</span>
+            <span class="legend-item"><span class="swatch" style="background:#2563eb"></span>Возвраты</span>
+            <span class="legend-item"><span class="swatch" style="background:#84cc16"></span>На ФФ</span>
+            <span class="legend-item"><span class="swatch" style="background:#ec4899"></span>Едет на склад ФФ</span>
+            <span class="legend-item"><span class="swatch" style="background:#0ea5e9"></span>Заказано</span>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card card-sm">
+            <div class="filter-row">
+              <span class="mono">Ассортимент</span>
+            </div>
+            <div class="bcg-wrap">
+              <span class="bcg-axis-y">Рост рынка →</span>
+              <div class="bcg-matrix">
+                <div class="bcg-q q1">Трудные дети</div>
+                <div class="bcg-q q2">Звёзды</div>
+                <div class="bcg-q q3">Собаки</div>
+                <div class="bcg-q q4">Дойные коровы</div>
+            <span class="bcg-dot" style="left:29.1%;top:17.4%;width:5px;height:5px;background:#f0a020"></span>
+            <span class="bcg-dot" style="left:33.1%;top:43.7%;width:9px;height:9px;background:#f0a020"></span>
+            <span class="bcg-dot" style="left:45.1%;top:42.9%;width:5px;height:5px;background:#f0a020"></span>
+            <span class="bcg-dot" style="left:18.0%;top:19.0%;width:5px;height:5px;background:#f0a020"></span>
+            <span class="bcg-dot" style="left:42.0%;top:36.0%;width:9px;height:9px;background:#f0a020"></span>
+            <span class="bcg-dot" style="left:4.4%;top:22.5%;width:5px;height:5px;background:#f0a020"></span>
+            <span class="bcg-dot" style="left:28.5%;top:14.7%;width:9px;height:9px;background:#f0a020"></span>
+            <span class="bcg-dot" style="left:27.7%;top:11.9%;width:5px;height:5px;background:#f0a020"></span>
+            <span class="bcg-dot" style="left:27.2%;top:23.0%;width:5px;height:5px;background:#f0a020"></span>
+            <span class="bcg-dot" style="left:27.4%;top:36.7%;width:5px;height:5px;background:#f0a020"></span>
+            <span class="bcg-dot" style="left:21.9%;top:21.0%;width:5px;height:5px;background:#f0a020"></span>
+            <span class="bcg-dot" style="left:59.5%;top:37.7%;width:5px;height:5px;background:#2c5fd6"></span>
+            <span class="bcg-dot" style="left:79.3%;top:10.0%;width:5px;height:5px;background:#2c5fd6"></span>
+            <span class="bcg-dot" style="left:90.5%;top:29.3%;width:5px;height:5px;background:#2c5fd6"></span>
+            <span class="bcg-dot" style="left:55.0%;top:39.4%;width:5px;height:5px;background:#2c5fd6"></span>
+            <span class="bcg-dot" style="left:73.2%;top:21.5%;width:5px;height:5px;background:#2c5fd6"></span>
+            <span class="bcg-dot" style="left:60.7%;top:10.0%;width:5px;height:5px;background:#2c5fd6"></span>
+            <span class="bcg-dot" style="left:86.6%;top:15.0%;width:5px;height:5px;background:#2c5fd6"></span>
+            <span class="bcg-dot" style="left:78.2%;top:39.3%;width:5px;height:5px;background:#2c5fd6"></span>
+            <span class="bcg-dot" style="left:67.2%;top:6.5%;width:5px;height:5px;background:#2c5fd6"></span>
+            <span class="bcg-dot" style="left:64.8%;top:42.9%;width:5px;height:5px;background:#2c5fd6"></span>
+            <span class="bcg-dot" style="left:80.0%;top:28.7%;width:5px;height:5px;background:#2c5fd6"></span>
+            <span class="bcg-dot" style="left:26.6%;top:69.2%;width:5px;height:5px;background:#d63a35"></span>
+            <span class="bcg-dot" style="left:9.1%;top:63.9%;width:5px;height:5px;background:#d63a35"></span>
+            <span class="bcg-dot" style="left:36.4%;top:54.1%;width:5px;height:5px;background:#d63a35"></span>
+            <span class="bcg-dot" style="left:25.8%;top:64.0%;width:5px;height:5px;background:#d63a35"></span>
+            <span class="bcg-dot" style="left:42.6%;top:86.2%;width:5px;height:5px;background:#d63a35"></span>
+            <span class="bcg-dot" style="left:13.3%;top:57.0%;width:5px;height:5px;background:#d63a35"></span>
+            <span class="bcg-dot" style="left:45.4%;top:89.7%;width:5px;height:5px;background:#d63a35"></span>
+            <span class="bcg-dot" style="left:17.0%;top:68.3%;width:5px;height:5px;background:#d63a35"></span>
+            <span class="bcg-dot" style="left:36.2%;top:56.6%;width:5px;height:5px;background:#d63a35"></span>
+            <span class="bcg-dot" style="left:11.7%;top:55.3%;width:5px;height:5px;background:#d63a35"></span>
+            <span class="bcg-dot" style="left:45.8%;top:68.7%;width:5px;height:5px;background:#d63a35"></span>
+            <span class="bcg-dot" style="left:81.0%;top:59.0%;width:5px;height:5px;background:#1f7a35"></span>
+            <span class="bcg-dot" style="left:91.0%;top:64.3%;width:5px;height:5px;background:#1f7a35"></span>
+            <span class="bcg-dot" style="left:81.1%;top:79.5%;width:5px;height:5px;background:#1f7a35"></span>
+            <span class="bcg-dot" style="left:60.4%;top:57.2%;width:5px;height:5px;background:#1f7a35"></span>
+            <span class="bcg-dot" style="left:66.7%;top:58.7%;width:5px;height:5px;background:#1f7a35"></span>
+            <span class="bcg-dot" style="left:60.0%;top:81.8%;width:5px;height:5px;background:#1f7a35"></span>
+            <span class="bcg-dot" style="left:63.0%;top:88.8%;width:5px;height:5px;background:#1f7a35"></span>
+            <span class="bcg-dot" style="left:61.2%;top:82.7%;width:5px;height:5px;background:#1f7a35"></span>
+            <span class="bcg-dot" style="left:73.6%;top:65.9%;width:5px;height:5px;background:#1f7a35"></span>
+            <span class="bcg-dot" style="left:72.4%;top:80.1%;width:5px;height:5px;background:#1f7a35"></span>
+            <span class="bcg-dot" style="left:72.1%;top:56.1%;width:5px;height:5px;background:#1f7a35"></span>
+                <div class="bcg-tooltip">
+                  <strong>Ножи набор 116</strong>
+                  <span>SKU-10342 · Звёзды</span>
+                  <span>Маркетплейс: Ozon</span>
+                  <span>Рост рынка: +17%</span>
+                  <span>Доля рынка: 22%</span>
+                  <span>Выручка: 4 761 000 ₽</span>
+                </div>
+              </div>
+            </div>
+            <span class="axis-x">Относительная доля рынка →</span>
+          </div>
+
+          <div class="card card-sm">
+            <div class="filter-row">
+              <span class="mono">Структура спроса</span>
+              <span class="widget-tools">
+              <img src="assets/img/icon-expand.png" alt="">
+              <img src="assets/img/icon-layers.png" alt="">
+              <img src="assets/img/icon-add.png" alt="">
+            </span>
+            </div>
+            <div class="treemap">
+              <div class="tm-cell" style="grid-column:1 / span 4;grid-row:1 / span 5;background:#1a73f9"><strong>SKU-0004</strong><span>11.3%</span></div>
+              <div class="tm-cell" style="grid-column:5 / span 3;grid-row:1 / span 5;background:#1a73f9"><strong>SKU-0025</strong><span>9.7%</span></div>
+              <div class="tm-cell" style="grid-column:8 / span 2;grid-row:1 / span 3;background:#12b981"><strong>SKU-0022</strong><span>4.8%</span></div>
+              <div class="tm-cell" style="grid-column:10 / span 2;grid-row:1 / span 3;background:#12b981"><strong>SKU-0011</strong><span>4.2%</span></div>
+              <div class="tm-cell" style="grid-column:12 / span 1;grid-row:1 / span 3;background:#12b981"><strong>SKU-0015</strong><span>4.2%</span></div>
+              <div class="tm-cell" style="grid-column:8 / span 2;grid-row:4 / span 3;background:#1a73f9"><strong>SKU-0008</strong><span>4.2%</span></div>
+              <div class="tm-cell" style="grid-column:10 / span 2;grid-row:4 / span 3;background:#1a73f9"><strong>SKU-0016</strong><span>3.5%</span></div>
+              <div class="tm-cell" style="grid-column:12 / span 1;grid-row:4 / span 3;background:#12b981"><strong>SKU-0003</strong><span>3.4%</span></div>
+              <div class="tm-cell" style="grid-column:1 / span 5;grid-row:6 / span 3;background:#12b981"><strong>SKU-0021</strong><span>9.3%</span></div>
+              <div class="tm-cell" style="grid-column:6 / span 2;grid-row:6 / span 4;background:#1a73f9"><strong>SKU-0017</strong><span>2.5%</span></div>
+              <div class="tm-cell" style="grid-column:8 / span 3;grid-row:7 / span 3;background:#12b981"><strong>SKU-0013</strong><span>3.2%</span></div>
+              <div class="tm-cell" style="grid-column:11 / span 2;grid-row:7 / span 3;background:#12b981"><strong>SKU-0009</strong><span>2.9%</span></div>
+              <div class="tm-cell" style="grid-column:1 / span 3;grid-row:9 / span 2;background:#1a73f9"><strong>SKU-0006</strong><span>8%</span></div>
+              <div class="tm-cell" style="grid-column:4 / span 2;grid-row:9 / span 4;background:#12b981"><strong>SKU-0018</strong><span>5.4%</span></div>
+              <div class="tm-cell" style="grid-column:6 / span 2;grid-row:10 / span 3;background:#12b981"><strong>SKU-0026</strong><span>2.1%</span></div>
+              <div class="tm-cell" style="grid-column:8 / span 2;grid-row:10 / span 2;background:#1a73f9"><strong>SKU-0024</strong><span>2.9%</span></div>
+              <div class="tm-cell" style="grid-column:10 / span 1;grid-row:10 / span 2;background:#12b981"><strong>SKU-0012</strong><span>2.9%</span></div>
+              <div class="tm-cell" style="grid-column:11 / span 2;grid-row:10 / span 2;background:#1a73f9"><strong>SKU-0001</strong><span>2.5%</span></div>
+              <div class="tm-cell" style="grid-column:1 / span 3;grid-row:11 / span 2;background:#12b981"><strong>SKU-0002</strong><span>7.7%</span></div>
+              <div class="tm-cell" style="grid-column:8 / span 1;grid-row:12 / span 1;background:#f0a020"><strong>SKU-0029</strong><span>2.5%</span></div>
+              <div class="tm-cell" style="grid-column:9 / span 1;grid-row:12 / span 1;background:#98a2ac"><strong>SKU-0030</strong><span>2.3%</span></div>
+              <div class="tm-cell" style="grid-column:10 / span 1;grid-row:12 / span 1;background:#12b981"><strong>SKU-0033</strong><span>1.7%</span></div>
+              <div class="tm-cell" style="grid-column:11 / span 2;grid-row:12 / span 1;background:#f0a020"><strong>SKU-0027</strong><span>1.6%</span></div>
+            </div>
+          </div>
+
+          <div class="card card-sm">
+            <div class="filter-row">
+              <span class="mono">Кластера и маржа</span>
+              <span class="widget-tools">
+              <img src="assets/img/icon-expand.png" alt="">
+              <img src="assets/img/icon-layers.png" alt="">
+              <img src="assets/img/icon-add.png" alt="">
+            </span>
+            </div>
+            <div class="elastic">
+              <div class="elastic-dots"></div>
+            <span class="elastic-point" style="left:3%;bottom:4%"><i></i><span>эконом: 1 329 870</span></span>
+            <span class="elastic-point" style="left:9%;bottom:12%"><i></i><span>средний: 528 740</span></span>
+            <span class="elastic-point" style="left:21%;bottom:25%"><i></i><span>премиум: 191 940</span></span>
+            <span class="elastic-point" style="left:50%;bottom:44%"><i></i><span>vip: 45 420</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="dash-tabs">
+            <span class="mono" style="margin-right:6px">Дашборды</span>
+            <span class="dash-tab">ДРР</span>
+            <span class="dash-tab is-active">Залежи</span>
+            <span class="dash-tab">P&L</span>
+            <span class="dash-tab">Cross Effect</span>
+            <span class="dash-tab">Эластичность</span>
+            <span class="dash-tab">Кластер</span>
+            <span class="dash-tab">BCG</span>
+            <span class="dash-tab">Финпоток</span>
+            <span class="dash-tab">KPI</span>
+            <span class="dash-tab">Оборач-сть</span>
+            <span class="widget-tools">
+              <img src="assets/img/icon-expand.png" alt="">
+              <img src="assets/img/icon-layers.png" alt="">
+              <img src="assets/img/icon-add.png" alt="">
+            </span>
+          </div>
+          <div class="grid-dash">
+            <div style="display:flex;flex-direction:column;gap:20px">
+              <div class="panel">
+                <h3>Себест. товаров, которые не продаются</h3>
+                <div class="chart-legend">
+                  <span>Дней без продаж</span>
+                  <span><i class="dot" style="background:#f0a020"></i>&lt;40</span>
+                  <span><i class="dot" style="background:#ef4444"></i>41–150</span>
+                  <span><i class="dot" style="background:#a3200f"></i>151+</span>
+                </div>
+                <svg class="chart-svg" viewBox="0 0 560 210" preserveAspectRatio="none">
+                  <polyline points="10,150 105,128 200,112 295,104 390,74 465,58 550,52" fill="none" stroke="#f0a020" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="10,96 105,120 200,72 295,76 390,38 465,30 550,34" fill="none" stroke="#ef4444" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="10,190 105,186 200,182 295,178 390,170 465,164 550,160" fill="none" stroke="#a3200f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="chart-x">
+                  <span>фев 2026</span><span>мар 2026</span><span>апр 2026</span><span>май 2026</span><span>июн 2026</span><span>июл 2026</span>
+                </div>
+              </div>
+              <div class="panel" style="gap:14px">
+                <h3>Залежи по товарным группам</h3>
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Товарная группа</th>
+                      <th class="center">1–5</th>
+                      <th class="center">6–14</th>
+                      <th class="center">15+</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Роботы-пылесосы</td>
+                    <td class="center"><span class="cell-pill cell-a">137 K</span></td>
+                    <td class="center"><span class="cell-pill cell-b">295 K</span></td>
+                    <td class="center"><span class="cell-pill cell-c">89 K</span></td>
+                  </tr>
+                  <tr>
+                    <td>Красота и здоровье</td>
+                    <td class="center"><span class="cell-pill cell-a">23 K</span></td>
+                    <td class="center"><span class="cell-pill cell-b">30 K</span></td>
+                    <td class="center"><span class="cell-pill cell-c">37 K</span></td>
+                  </tr>
+                  <tr>
+                    <td>Гаджеты</td>
+                    <td class="center"><span class="cell-pill cell-a">41 K</span></td>
+                    <td class="center"><span class="cell-pill cell-b">27 K</span></td>
+                    <td class="center"><span class="cell-pill cell-c">30 K</span></td>
+                  </tr>
+                  <tr>
+                    <td>Умный дом</td>
+                    <td class="center"><span class="cell-pill cell-a">63 K</span></td>
+                    <td class="center"><span class="cell-pill cell-b">111 K</span></td>
+                    <td class="center"><span class="cell-pill cell-c">18 K</span></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="panel" style="gap:14px">
+              <h3>Детализация по товарам</h3>
+              <div style="overflow-x:auto">
+                <table class="data-table detail" style="min-width:420px">
+                  <thead>
+                    <tr>
+                      <th>Товар</th>
+                      <th class="right">Остаток в себест.</th>
+                      <th class="right">Остаток, шт</th>
+                      <th class="right">Дн. без продажи</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Электросамокат Kugoo M4 Pro 18Ah</td>
+                      <td class="right" style="font-weight:600">158,4 K</td>
+                      <td class="right" style="color:#777c86">5</td>
+                      <td class="right"><span class="day-badge" style="color:#777c86"><i style="background:transparent"></i>3</span></td>
+                    </tr>
+                    <tr>
+                      <td>Электросамокат Kugoo S3 Pro 350W</td>
+                      <td class="right" style="font-weight:600">133,3 K</td>
+                      <td class="right" style="color:#777c86">6</td>
+                      <td class="right"><span class="day-badge" style="color:#cf3226"><i style="background:#ef4444"></i>52</span></td>
+                    </tr>
+                    <tr>
+                      <td>Электровелосипед Kugoo V1 Mini</td>
+                      <td class="right" style="font-weight:600">113,7 K</td>
+                      <td class="right" style="color:#777c86">4</td>
+                      <td class="right"><span class="day-badge" style="color:#b3730a"><i style="background:#f0a020"></i>36</span></td>
+                    </tr>
+                    <tr>
+                      <td>Электросамокат Ninebot F2 Plus</td>
+                      <td class="right" style="font-weight:600">82,6 K</td>
+                      <td class="right" style="color:#777c86">6</td>
+                      <td class="right"><span class="day-badge" style="color:#777c86"><i style="background:transparent"></i>3</span></td>
+                    </tr>
+                    <tr>
+                      <td>Электросамокат Kugoo C1 Pro</td>
+                      <td class="right" style="font-weight:600">77,6 K</td>
+                      <td class="right" style="color:#777c86">3</td>
+                      <td class="right"><span class="day-badge" style="color:#777c86"><i style="background:transparent"></i>13</span></td>
+                    </tr>
+                    <tr>
+                      <td>Робот-пылесос Dreame D9</td>
+                      <td class="right" style="font-weight:600">76,8 K</td>
+                      <td class="right" style="color:#777c86">4</td>
+                      <td class="right"><span class="day-badge" style="color:#777c86"><i style="background:transparent"></i>9</span></td>
+                    </tr>
+                    <tr>
+                      <td>Смартфон Xiaomi POCO X6 Pro 12/512</td>
+                      <td class="right" style="font-weight:600">64,8 K</td>
+                      <td class="right" style="color:#777c86">5</td>
+                      <td class="right"><span class="day-badge" style="color:#777c86"><i style="background:transparent"></i>1</span></td>
+                    </tr>
+                    <tr>
+                      <td>Смартфон Xiaomi Redmi Note 13 Pro</td>
+                      <td class="right" style="font-weight:600">60,5 K</td>
+                      <td class="right" style="color:#777c86">3</td>
+                      <td class="right"><span class="day-badge" style="color:#b3730a"><i style="background:#f0a020"></i>25</span></td>
+                    </tr>
+                    <tr>
+                      <td>Робот-пылесос Xiaomi Vacuum S20</td>
+                      <td class="right" style="font-weight:600">55,3 K</td>
+                      <td class="right" style="color:#777c86">1</td>
+                      <td class="right"><span class="day-badge" style="color:#cf3226"><i style="background:#ef4444"></i>52</span></td>
+                    </tr>
+                    <tr>
+                      <td>Электровелосипед Kugoo V1 Max</td>
+                      <td class="right" style="font-weight:600">49,9 K</td>
+                      <td class="right" style="color:#777c86">2</td>
+                      <td class="right"><span class="day-badge" style="color:#a3200f"><i style="background:#a3200f"></i>224</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="btn btn-primary btn-lg glow-strong" href="#contact">Запросить демо</a>
+      <span class="hero-demo-note">Расскажем за 30 минут про 10 точек оптимизации чистой прибыли</span>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <div class="pricing-inner">
+      <div class="section-head">
+        <h2>Цены и тарифы</h2>
+        <p>SaaS для быстрого старта, OnPremise — когда данные должны остаться в вашем контуре.</p>
+      </div>
+
+      <div class="billing-toggle">
+        <div class="billing-toggle-inner">
+          <button type="button" class="is-active" data-billing="year">Оплата за год</button>
+          <button type="button" data-billing="month">Оплата за месяц</button>
+        </div>
+      </div>
+
+      <div class="plans" id="plans"></div>
+
+      <p class="pricing-footnote">Все тарифы включают миграцию каталога и данных, обучение склада / продаж / логистики и SLA-поддержку. Цены без НДС.<br>Не является публичной офертой.</p>
+
+      <div class="pricing-offer">
+        <span class="offer-dot desktop-only"></span>
+        <span>Внедрение за 2 нед. + 2 мес. поддержка в подарок – до 30 августа</span>
+        <a href="#contact" class="desktop-only">Забрать предложение</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-copy">
+        <h2>Покажем <span class="logo" style="display:inline-flex;white-space:nowrap">seller<span class="logo-data">data</span></span><br>и сценарии роста маржи</h2>
+        <p>Демо с кейсами и примерами на 30 минут</p>
+        <div class="bullets">
+          <div class="bullet"><i></i>Ответим в течение рабочего дня</div>
+          <div class="bullet"><i></i>Пилот на одном ЛК — оплата лицензии только после запуска</div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-success" id="form-success">
+          <strong>Заявка отправлена</strong>
+          <span>Свяжемся с вами в течение рабочего дня.</span>
+        </div>
+        <div class="form-body" id="form-body">
+          <h3>Запросить консультацию</h3>
+          <label class="field">
+            <span>Телефон<span class="req">*</span></span>
+            <input type="tel" id="phone" placeholder="+7 900 000-00-00" autocomplete="tel">
+            <span class="field-error" id="phone-error">Укажите номер телефона</span>
+          </label>
+
+          <div class="slot-wrap">
+            <span>Удобное время звонка <span class="opt">— необязательно</span></span>
+            <button type="button" class="slot-trigger" id="slot-trigger">
+              <span id="slot-label">Выбрать дату и время</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2.2" y="3.4" width="11.6" height="10.4" rx="2" stroke="#777c86" stroke-width="1.3"/><path d="M2.2 6.6h11.6M5.6 2.2v2.2M10.4 2.2v2.2" stroke="#777c86" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </button>
+            <div class="slot-panel" id="slot-panel">
+              <button type="button" class="now-btn" id="now-btn"><i></i>Прямо сейчас</button>
+              <div>
+                <div class="slot-label" style="margin-bottom:8px">Дата</div>
+                <div class="days" id="slot-days"></div>
+              </div>
+              <div>
+                <div class="slot-label" style="margin-bottom:8px">Время</div>
+                <div class="times" id="slot-times"></div>
+              </div>
+              <div class="slot-footer">
+                <button type="button" class="reset" id="slot-reset">Сбросить</button>
+                <button type="button" class="btn btn-primary" id="slot-done" style="padding:9px 20px;font-size:14px">Готово</button>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-lg" id="submit-btn" style="width:100%">Отправить заявку</button>
+          <label class="consent">
+            <input type="checkbox">
+            <span>Я даю своё согласие в соответствии с <a href="#contact">Политикой обработки персональных данных</a></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/img/logo-mark.png" alt="">
+        <span class="logo">seller<span class="logo-data">DATA</span></span>
+      </div>
+      <div class="footer-links">
+        <a href="#product">Продукт</a>
+        <a href="#pricing">Тарифы</a>
+        <a href="#contact">Демо</a>
+      </div>
+      <span class="footer-copy">© 2026 enterFBS</span>
+    </div>
+    <div class="footer-legal">Сервис разработан <a href="https://revelio.tech" target="_blank" rel="noopener">revelio.tech</a></div>
+    <div class="footer-legal">ООО «Ревелио»</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -237,19 +237,72 @@
   updateSlotUI();
 
   /* Form submit */
-  document.getElementById("submit-btn")?.addEventListener("click", () => {
-    const phone = document.getElementById("phone");
-    const err = document.getElementById("phone-error");
-    if (!phone.value.trim()) {
+  const leadForm = document.getElementById("lead-form");
+  const phone = document.getElementById("phone");
+  const consent = document.getElementById("consent");
+  const phoneError = document.getElementById("phone-error");
+  const consentError = document.getElementById("consent-error");
+  const formError = document.getElementById("form-error");
+  const submitButton = document.getElementById("submit-btn");
+  let submitting = false;
+
+  leadForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (submitting) return;
+
+    phone.classList.remove("is-error");
+    phone.removeAttribute("aria-invalid");
+    consent.removeAttribute("aria-invalid");
+    phoneError.classList.remove("is-visible");
+    consentError.classList.remove("is-visible");
+    consentError.textContent = "";
+    formError.classList.remove("is-visible");
+    formError.textContent = "";
+
+    if (!SellerdataLead.validPhone(phone.value)) {
       phone.classList.add("is-error");
-      err.classList.add("is-visible");
+      phone.setAttribute("aria-invalid", "true");
+      phoneError.textContent = phone.value.trim() ? "Укажите корректный номер телефона" : "Укажите номер телефона";
+      phoneError.classList.add("is-visible");
+      phone.focus();
       return;
     }
-    document.getElementById("form-body").classList.add("is-hidden");
-    document.getElementById("form-success").classList.add("is-visible");
+    if (!consent.checked) {
+      consent.setAttribute("aria-invalid", "true");
+      consentError.textContent = "Подтвердите согласие на обработку персональных данных";
+      consentError.classList.add("is-visible");
+      consent.focus();
+      return;
+    }
+
+    submitting = true;
+    submitButton.disabled = true;
+    submitButton.textContent = "Отправляем…";
+    try {
+      await SellerdataLead.submitLead(window.fetch.bind(window), {
+        phone: phone.value,
+        preferredCallTime: slotText(),
+        consent: consent.checked,
+      });
+      leadForm.classList.add("is-hidden");
+      document.getElementById("form-success").classList.add("is-visible");
+    } catch (_error) {
+      formError.textContent = "Не удалось отправить заявку. Попробуйте ещё раз.";
+      formError.classList.add("is-visible");
+    } finally {
+      submitting = false;
+      submitButton.disabled = false;
+      submitButton.textContent = "Отправить заявку";
+    }
   });
-  document.getElementById("phone")?.addEventListener("input", (e) => {
-    e.target.classList.remove("is-error");
-    document.getElementById("phone-error").classList.remove("is-visible");
+  phone?.addEventListener("input", () => {
+    phone.classList.remove("is-error");
+    phone.removeAttribute("aria-invalid");
+    phoneError.classList.remove("is-visible");
+  });
+  consent?.addEventListener("change", () => {
+    consent.removeAttribute("aria-invalid");
+    consentError.classList.remove("is-visible");
+    consentError.textContent = "";
   });
 })();

@@ -10,7 +10,20 @@ test('index references only existing local assets', () => {
 
   assert.ok(localRefs.length > 0);
   for (const ref of localRefs) {
-    assert.ok(fs.existsSync(path.resolve(ref)), `Missing local asset: ${ref}`);
+    const assetPath = ref.split(/[?#]/, 1)[0];
+    assert.ok(fs.existsSync(path.resolve(assetPath)), `Missing local asset: ${ref}`);
+  }
+});
+
+test('mutable local CSS and JavaScript assets have cache-busting URLs', () => {
+  const html = fs.readFileSync('index.html', 'utf8');
+  const refs = [...html.matchAll(/(?:src|href)="([^"]+\.(?:css|js)(?:\?[^"]*)?)"/g)]
+    .map((match) => match[1])
+    .filter((ref) => !/^https?:/.test(ref));
+
+  assert.ok(refs.length > 0);
+  for (const ref of refs) {
+    assert.match(ref, /\?v=[a-z0-9._-]+$/i, `Missing cache-busting version: ${ref}`);
   }
 });
 
@@ -23,5 +36,5 @@ test('lead capture uses semantic accessible form markup', () => {
   assert.match(html, /<button[^>]+type="submit"[^>]+id="submit-btn"/);
   assert.match(html, /id="form-error"[^>]+aria-live="polite"/);
   assert.match(html, /id="consent-error"[^>]+aria-live="polite"/);
-  assert.match(html, /<script src="js\/lead-form\.js"><\/script>/);
+  assert.match(html, /<script src="js\/lead-form\.js\?v=[^"]+"><\/script>/);
 });

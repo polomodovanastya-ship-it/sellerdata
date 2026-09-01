@@ -9,7 +9,12 @@ test('index references only existing local assets', () => {
   const localRefs = refs.filter((ref) => !/^(?:https?:|#|mailto:|tel:)/.test(ref));
 
   assert.ok(localRefs.length > 0);
+  assert.match(html, /href="\/favicon\.ico"/);
+  assert.match(html, /href="\/site\.webmanifest"/);
   for (const ref of localRefs) {
-    assert.ok(fs.existsSync(path.resolve(ref)), `Missing local asset: ${ref}`);
+    const filePath = ref.startsWith("/") ? ref.slice(1) : ref;
+    assert.ok(fs.existsSync(path.resolve(filePath)), `Missing local asset: ${ref}`);
   }
+  assert.match(html, /fbs-form\.js/);
+  assert.match(html, /id="submit-error"/);
 });

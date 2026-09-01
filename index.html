@@ -4,6 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>eureka ecom — управленческая аналитика для селлеров</title>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#1a2550">
+  <meta name="msapplication-TileColor" content="#1a2550">
+  <meta name="msapplication-TileImage" content="/assets/img/android-chrome-192x192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -512,6 +522,7 @@
           </div>
 
           <button type="button" class="btn btn-primary btn-lg" id="submit-btn" style="width:100%">Отправить заявку</button>
+          <span class="field-error submit-error" id="submit-error"></span>
           <div class="consent-block">
             <label class="consent">
               <input type="checkbox" id="consent">
@@ -544,6 +555,15 @@
     <div class="footer-legal">ООО «Ревелио»</div>
   </footer>
 
+  <script>
+    (function () {
+      var host = window.location.hostname;
+      if (host === "eurekaecom.revelio.tech" || host === "www.eurekaecom.revelio.tech") {
+        window.FBS_LEADS_ENDPOINT = "https://fbs.revelio.tech/api/fbs-leads";
+      }
+    })();
+  </script>
+  <script src="js/fbs-form.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

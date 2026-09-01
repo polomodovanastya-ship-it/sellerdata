@@ -800,14 +800,40 @@
     });
   })();
 
-  /* Form submit */
-  document.getElementById("submit-btn")?.addEventListener("click", () => {
+  /* Form submit → POST /api/fbs-leads (WEEEK, тот же бэкенд что enterFBS) */
+  const submitBtn = document.getElementById("submit-btn");
+  const submitError = document.getElementById("submit-error");
+  let formSending = false;
+
+  function setSubmitError(message) {
+    if (!submitError) return;
+    if (message) {
+      submitError.textContent = message;
+      submitError.classList.add("is-visible");
+    } else {
+      submitError.textContent = "";
+      submitError.classList.remove("is-visible");
+    }
+  }
+
+  function setSubmitting(sending) {
+    formSending = sending;
+    if (!submitBtn) return;
+    submitBtn.disabled = sending;
+    submitBtn.textContent = sending ? "Отправка…" : "Отправить заявку";
+    submitBtn.style.opacity = sending ? "0.7" : "";
+    submitBtn.style.cursor = sending ? "wait" : "";
+  }
+
+  submitBtn?.addEventListener("click", async () => {
+    if (formSending) return;
     const phone = document.getElementById("phone");
     const phoneErr = document.getElementById("phone-error");
     const consent = document.getElementById("consent");
     const consentErr = document.getElementById("consent-error");
     const phoneOk = Boolean(phone?.value.trim());
     const consentOk = Boolean(consent?.checked);
+    setSubmitError("");
     if (!phoneOk) {
       phone.classList.add("is-error");
       phoneErr.classList.add("is-visible");
@@ -816,8 +842,30 @@
       consentErr.classList.add("is-visible");
     }
     if (!phoneOk || !consentOk) return;
-    document.getElementById("form-body").classList.add("is-hidden");
-    document.getElementById("form-success").classList.add("is-visible");
+
+    if (!window.FbsForm || typeof window.FbsForm.submitLead !== "function") {
+      setSubmitError("Не удалось отправить заявку. Попробуйте ещё раз.");
+      return;
+    }
+
+    const hasPreferredTime = state.slotNow || state.slotDay !== null || Boolean(state.slotTime);
+    setSubmitting(true);
+    try {
+      await window.FbsForm.submitLead({
+        phone: phone.value.trim(),
+        preferred_call_time: hasPreferredTime ? slotText() : "",
+        consent: true,
+        source: "eureka",
+      });
+      document.getElementById("form-body").classList.add("is-hidden");
+      document.getElementById("form-success").classList.add("is-visible");
+    } catch (error) {
+      setSubmitError(
+        error && error.message ? error.message : "Не удалось отправить заявку. Попробуйте ещё раз.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   });
   document.getElementById("phone")?.addEventListener("input", (e) => {
     e.target.classList.remove("is-error");

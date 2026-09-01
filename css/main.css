@@ -1539,6 +1539,12 @@ img {
   padding-left: 18px;
 }
 
+.submit-error {
+  margin-top: 10px;
+  text-align: center;
+  padding-left: 0;
+}
+
 .field-error.is-visible {
   display: block;
 }

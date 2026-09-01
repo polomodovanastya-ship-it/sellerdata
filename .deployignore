@@ -8,3 +8,7 @@
 /Makefile
 /README.md
 /.DS_Store
+/dev-server.mjs
+/package.json
+/server/
+/.env.example

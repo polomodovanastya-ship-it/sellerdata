@@ -1,5 +1,6 @@
 /.git/
 /.github/
+/.serena/
 /docs/
 /tests/
 /.deployignore

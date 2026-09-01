@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css?v=20260901-1">
 </head>
 <body>
   <a class="offer-bar" href="#contact">
@@ -487,15 +487,15 @@
       </div>
 
       <div class="form-card">
-        <div class="form-success" id="form-success">
+        <div class="form-success" id="form-success" role="status" aria-live="polite">
           <strong>Заявка отправлена</strong>
           <span>Свяжемся с вами в течение рабочего дня.</span>
         </div>
-        <div class="form-body" id="form-body">
+        <form class="form-body" id="lead-form" novalidate>
           <label class="field">
             <span>Телефон<span class="req">*</span></span>
-            <input type="tel" id="phone" placeholder="+7 900 000-00-00" autocomplete="tel">
-            <span class="field-error" id="phone-error">Укажите номер телефона</span>
+            <input type="tel" id="phone" name="phone" placeholder="+7 900 000-00-00" autocomplete="tel" aria-describedby="phone-error" required>
+            <span class="field-error" id="phone-error" aria-live="polite">Укажите номер телефона</span>
           </label>
 
           <div class="slot-wrap">
@@ -521,16 +521,16 @@
             </div>
           </div>
 
-          <button type="button" class="btn btn-primary btn-lg" id="submit-btn" style="width:100%">Отправить заявку</button>
-          <span class="field-error submit-error" id="submit-error"></span>
+          <button type="submit" class="btn btn-primary btn-lg" id="submit-btn" style="width:100%">Отправить заявку</button>
           <div class="consent-block">
             <label class="consent">
-              <input type="checkbox" id="consent">
+              <input type="checkbox" id="consent" name="consent" aria-describedby="consent-error" required>
               <span>Я даю своё <a href="https://revelio.tech/legal/consent_pd.pdf" target="_blank" rel="noopener">согласие</a> в соответствии с <a href="https://revelio.tech/legal/revelio_tech_policy_pd.pdf" target="_blank" rel="noopener">Политикой обработки персональных данных</a></span>
             </label>
-            <span class="field-error consent-error" id="consent-error">Подтвердите согласие на обработку персональных данных</span>
+            <span class="field-error consent-error" id="consent-error" aria-live="polite">Подтвердите согласие на обработку персональных данных</span>
           </div>
-        </div>
+          <div class="form-error" id="form-error" aria-live="polite"></div>
+        </form>
       </div>
     </div>
   </section>
@@ -555,15 +555,7 @@
     <div class="footer-legal">ООО «Ревелио»</div>
   </footer>
 
-  <script>
-    (function () {
-      var host = window.location.hostname;
-      if (host === "eurekaecom.revelio.tech" || host === "www.eurekaecom.revelio.tech") {
-        window.FBS_LEADS_ENDPOINT = "https://fbs.revelio.tech/api/fbs-leads";
-      }
-    })();
-  </script>
-  <script src="js/fbs-form.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/lead-form.js?v=20260901-1"></script>
+  <script src="js/main.js?v=20260901-1"></script>
 </body>
 </html>

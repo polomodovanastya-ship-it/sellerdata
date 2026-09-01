@@ -1549,6 +1549,30 @@ img {
   display: block;
 }
 
+.consent-error,
+.form-error {
+  display: none;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #b4232a;
+}
+
+.consent-error.is-visible,
+.form-error.is-visible {
+  display: block;
+}
+
+.form-error {
+  border-radius: 12px;
+  background: #fff1f1;
+  padding: 10px 12px;
+}
+
+#submit-btn:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
 .slot-wrap {
   display: flex;
   flex-direction: column;

@@ -800,80 +800,73 @@
     });
   })();
 
-  /* Form submit → POST /api/fbs-leads (WEEEK, тот же бэкенд что enterFBS) */
-  const submitBtn = document.getElementById("submit-btn");
-  const submitError = document.getElementById("submit-error");
-  let formSending = false;
+  /* Form submit */
+  const leadForm = document.getElementById("lead-form");
+  const phone = document.getElementById("phone");
+  const consent = document.getElementById("consent");
+  const phoneError = document.getElementById("phone-error");
+  const consentError = document.getElementById("consent-error");
+  const formError = document.getElementById("form-error");
+  const submitButton = document.getElementById("submit-btn");
+  let submitting = false;
 
-  function setSubmitError(message) {
-    if (!submitError) return;
-    if (message) {
-      submitError.textContent = message;
-      submitError.classList.add("is-visible");
-    } else {
-      submitError.textContent = "";
-      submitError.classList.remove("is-visible");
-    }
-  }
+  leadForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (submitting) return;
 
-  function setSubmitting(sending) {
-    formSending = sending;
-    if (!submitBtn) return;
-    submitBtn.disabled = sending;
-    submitBtn.textContent = sending ? "Отправка…" : "Отправить заявку";
-    submitBtn.style.opacity = sending ? "0.7" : "";
-    submitBtn.style.cursor = sending ? "wait" : "";
-  }
+    phone.classList.remove("is-error");
+    phone.removeAttribute("aria-invalid");
+    consent.removeAttribute("aria-invalid");
+    phoneError.classList.remove("is-visible");
+    consentError.classList.remove("is-visible");
+    consentError.textContent = "";
+    formError.classList.remove("is-visible");
+    formError.textContent = "";
 
-  submitBtn?.addEventListener("click", async () => {
-    if (formSending) return;
-    const phone = document.getElementById("phone");
-    const phoneErr = document.getElementById("phone-error");
-    const consent = document.getElementById("consent");
-    const consentErr = document.getElementById("consent-error");
-    const phoneOk = Boolean(phone?.value.trim());
-    const consentOk = Boolean(consent?.checked);
-    setSubmitError("");
-    if (!phoneOk) {
+    if (!SellerdataLead.validPhone(phone.value)) {
       phone.classList.add("is-error");
-      phoneErr.classList.add("is-visible");
+      phone.setAttribute("aria-invalid", "true");
+      phoneError.textContent = phone.value.trim() ? "Укажите корректный номер телефона" : "Укажите номер телефона";
+      phoneError.classList.add("is-visible");
+      phone.focus();
+      return;
     }
-    if (!consentOk) {
-      consentErr.classList.add("is-visible");
-    }
-    if (!phoneOk || !consentOk) return;
-
-    if (!window.FbsForm || typeof window.FbsForm.submitLead !== "function") {
-      setSubmitError("Не удалось отправить заявку. Попробуйте ещё раз.");
+    if (!consent.checked) {
+      consent.setAttribute("aria-invalid", "true");
+      consentError.textContent = "Подтвердите согласие на обработку персональных данных";
+      consentError.classList.add("is-visible");
+      consent.focus();
       return;
     }
 
-    const hasPreferredTime = state.slotNow || state.slotDay !== null || Boolean(state.slotTime);
-    setSubmitting(true);
+    submitting = true;
+    submitButton.disabled = true;
+    submitButton.textContent = "Отправляем…";
     try {
-      await window.FbsForm.submitLead({
-        phone: phone.value.trim(),
-        preferred_call_time: hasPreferredTime ? slotText() : "",
-        consent: true,
-        source: "eureka",
+      await SellerdataLead.submitLead(window.fetch.bind(window), {
+        phone: phone.value,
+        preferredCallTime: slotText(),
+        consent: consent.checked,
       });
-      document.getElementById("form-body").classList.add("is-hidden");
+      leadForm.classList.add("is-hidden");
       document.getElementById("form-success").classList.add("is-visible");
-    } catch (error) {
-      setSubmitError(
-        error && error.message ? error.message : "Не удалось отправить заявку. Попробуйте ещё раз.",
-      );
+    } catch (_error) {
+      formError.textContent = "Не удалось отправить заявку. Попробуйте ещё раз.";
+      formError.classList.add("is-visible");
     } finally {
-      setSubmitting(false);
+      submitting = false;
+      submitButton.disabled = false;
+      submitButton.textContent = "Отправить заявку";
     }
   });
-  document.getElementById("phone")?.addEventListener("input", (e) => {
-    e.target.classList.remove("is-error");
-    document.getElementById("phone-error").classList.remove("is-visible");
+  phone?.addEventListener("input", () => {
+    phone.classList.remove("is-error");
+    phone.removeAttribute("aria-invalid");
+    phoneError.classList.remove("is-visible");
   });
-  document.getElementById("consent")?.addEventListener("change", (e) => {
-    if (e.target.checked) {
-      document.getElementById("consent-error").classList.remove("is-visible");
-    }
+  consent?.addEventListener("change", () => {
+    consent.removeAttribute("aria-invalid");
+    consentError.classList.remove("is-visible");
+    consentError.textContent = "";
   });
 })();
